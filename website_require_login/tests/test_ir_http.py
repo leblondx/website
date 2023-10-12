@@ -12,7 +12,7 @@ class TestIrHttp(HttpCase):
             {"name": "Test User", "login": "test_user", "password": "12345"}
         )
         self.path = "/contactus"
-        self.expected_path = "/web/login?redirect=%s" % self.path
+        self.expected_path = f"/web/login?redirect={self.path}"
 
     def test_dispatch_unauthorized(self):
         # Test that an unauthorized user cannot access "/auth_path
