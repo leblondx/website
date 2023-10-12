@@ -54,9 +54,7 @@ def _merge_views(env, xmlids):
             anchor_name = old_view_id.key.split(".")[1]
             # Insert item in table content list
             list_item = ElementTree.fromstring(
-                "<li><p><a href='#{}'>{}</a></p></li>".format(
-                    anchor_name, escape(old_view_id.name)
-                )
+                f"<li><p><a href='#{anchor_name}'>{escape(old_view_id.name)}</a></p></li>"
             )
             table_content_list.append(list_item)
             # Insert section content
@@ -65,7 +63,7 @@ def _merge_views(env, xmlids):
             sections_content.append(deepcopy(separator))
             sections_content.append(
                 ElementTree.fromstring(
-                    "<a class='legal_anchor' id='%s'/>" % anchor_name
+                    f"<a class='legal_anchor' id='{anchor_name}'/>"
                 )
             )
             for children in old_content.getchildren():
